@@ -42,10 +42,56 @@ margin-left:20px;
 text-decoration:none;
 color:#555;
 font-weight:500;
+position:relative;
 }
 
-.nav-links a:hover{
+.nav-links a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-3px;
+width:0%;
+height:2px;
+background:#2a5298;
+transition:.25s;
+}
+
+.nav-links a:hover::after{
+width:100%;
+}
+
+/* HERO */
+
+.hero{
+text-align:center;
+padding:80px 20px 40px 20px;
+animation:fadeUp 1s ease;
+}
+
+.profile{
+width:150px;
+height:150px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid #1f2937;
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:2.8rem;
+margin-bottom:10px;
+}
+
+.highlight{
 color:#2a5298;
+}
+
+.hero p{
+color:#666;
+max-width:600px;
+margin:auto;
+font-size:1.1rem;
 }
 
 /* MAIN CONTAINER */
@@ -53,20 +99,7 @@ color:#2a5298;
 .container{
 max-width:1100px;
 margin:auto;
-padding:60px 20px;
-}
-
-h1{
-font-size:3rem;
-margin-bottom:10px;
-text-align:center;
-color:#222;
-}
-
-.subtitle{
-text-align:center;
-color:#666;
-margin-bottom:50px;
+padding:40px 20px;
 }
 
 /* SECTION PANELS */
@@ -80,6 +113,9 @@ background:white;
 padding:35px;
 border-radius:14px;
 box-shadow:0 8px 25px rgba(0,0,0,.06);
+transition:all .6s ease;
+opacity:0;
+transform:translateY(40px);
 }
 
 /* SECTION HEADERS */
@@ -118,13 +154,20 @@ background:white;
 padding:25px;
 border-radius:14px;
 box-shadow:0 10px 25px rgba(0,0,0,.08);
-transition:.2s;
 border:1px solid #eee;
+transition:all .25s ease;
+opacity:0;
+transform:translateY(20px);
+animation:fadeUp .8s ease forwards;
 }
 
+.card:nth-child(1){animation-delay:.1s}
+.card:nth-child(2){animation-delay:.2s}
+.card:nth-child(3){animation-delay:.3s}
+
 .card:hover{
-transform:translateY(-6px);
-box-shadow:0 15px 35px rgba(0,0,0,.12);
+transform:translateY(-6px) scale(1.02);
+box-shadow:0 20px 40px rgba(0,0,0,.15);
 }
 
 .card h3{
@@ -161,13 +204,11 @@ padding:10px;
 border-radius:8px;
 text-align:center;
 font-size:.9rem;
+transition:.2s;
 }
 
-/* EXPERIENCE */
-
-.section p{
-color:#555;
-line-height:1.6;
+.skill:hover{
+background:#e9eef8;
 }
 
 /* CONTACT */
@@ -188,6 +229,19 @@ margin-top:60px;
 text-align:center;
 color:#777;
 font-size:.9rem;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 </style>
@@ -213,27 +267,37 @@ Anthony Frialde
 </div>
 </nav>
 
-<div class="container">
+<!-- HERO SECTION -->
 
-<h1>Anthony Frialde</h1>
-<p class="subtitle">
-Computer Information Systems • Clemson University • Expected Graduation 2027
+<section class="hero">
+
+<img src="/static/img/profile.jpg" class="profile">
+
+<h1>
+Hey, I'm <span class="highlight">Anthony Frialde</span>
+</h1>
+
+<p>
+Computer Information Systems student at Clemson University building web applications,
+software projects, and cloud systems.
 </p>
 
+</section>
+
+<div class="container">
 
 <div class="section panel" id="about">
 
 <h2>About Me</h2>
 
 <p class="bio">
-My name is Anthony Frialde and I am currently studying Computer Information Systems at Clemson University. 
-I am interested in software development, cloud systems, and emerging technologies such as artificial intelligence. 
-Outside of technology, I enjoy spending time outdoors camping, fishing and exploring nature. 
-I am currently in my senior year and expect to graduate in Fall 2027.
+My name is Anthony Frialde and I am currently studying Computer Information Systems at Clemson University.
+I am interested in software development, cloud systems, and emerging technologies such as artificial intelligence.
+Outside of technology, I enjoy spending time outdoors camping, fishing and exploring nature.
+I expect to graduate in Fall 2027.
 </p>
 
 </div>
-
 
 <div class="section panel" id="projects">
 
@@ -257,7 +321,6 @@ I am currently in my senior year and expect to graduate in Fall 2027.
 
 </div>
 
-
 <div class="section panel" id="skills">
 
 <h2>Skills</h2>
@@ -278,7 +341,6 @@ I am currently in my senior year and expect to graduate in Fall 2027.
 </div>
 
 </div>
-
 
 <div class="section panel">
 
@@ -303,7 +365,6 @@ April 2021 – August 2021<br>
 
 </div>
 
-
 <div class="section panel contact" id="contact">
 
 <h2>Contact</h2>
@@ -316,12 +377,32 @@ April 2021 – August 2021<br>
 
 </div>
 
-
 <div class="footer">
 Anthony Frialde • Portfolio
 </div>
 
 </div>
+
+<script>
+
+/* SCROLL REVEAL */
+
+const panels = document.querySelectorAll(".panel");
+
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.style.opacity="1";
+entry.target.style.transform="translateY(0)";
+}
+});
+});
+
+panels.forEach(panel=>{
+observer.observe(panel);
+});
+
+</script>
 
 </body>
 </html>
