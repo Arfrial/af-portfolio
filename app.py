@@ -16,8 +16,11 @@ DATABASE_URL = os.environ.get("DATABASE_URL")
 def get_db_connection():
     return psycopg2.connect(DATABASE_URL)
 
-
 @app.route("/")
+def home():
+    return render_template("home.html")
+
+@app.route("/fish")
 def list_catches():
     page = int(request.args.get("page", 1))
     search = request.args.get("search", "")
@@ -91,7 +94,7 @@ def list_catches():
 
     return response
 
-@app.route("/stats")
+@app.route("/fish/stats")
 def stats():
     page_size = int(request.cookies.get("page_size", 10))
 
@@ -145,7 +148,7 @@ def stats():
         biggest_fish=biggest_fish
     )
 
-@app.route("/new", methods=["GET", "POST"])
+@app.route("/fish/new", methods=["GET", "POST"])
 def add_catch():
     if request.method == "POST":
         species = request.form["species"]
@@ -170,11 +173,11 @@ def add_catch():
 
         flash("Catch added successfully!")
 
-        return redirect("/")
+        return redirect("/fish")
 
     return render_template("form.html", catch=None)
 
-@app.route("/edit/<int:id>", methods=["GET", "POST"])
+@app.route("/fish/edit/<int:id>", methods=["GET", "POST"])
 def edit_catch(id):
     conn = get_db_connection()
     cur = conn.cursor()
@@ -207,7 +210,7 @@ def edit_catch(id):
 
         flash("Catch updated successfully!")
 
-        return redirect("/")
+        return redirect("/fish")
 
     # GET request → load existing record
     cur.execute("SELECT * FROM catches WHERE id=%s;", (id,))
@@ -218,7 +221,7 @@ def edit_catch(id):
 
     return render_template("form.html", catch=catch)
 
-@app.route("/delete/<int:id>", methods=["GET", "POST"])
+@app.route("/fish/delete/<int:id>", methods=["GET", "POST"])
 def delete_catch(id):
     conn = get_db_connection()
     cur = conn.cursor()
@@ -231,7 +234,7 @@ def delete_catch(id):
 
         flash("Catch removed successfully!")
 
-        return redirect("/")
+        return redirect("/fish")
 
     # GET request → show confirmation page
     cur.execute("SELECT species FROM catches WHERE id=%s;", (id,))

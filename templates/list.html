@@ -352,8 +352,9 @@
 {% endwith %}
 
 <div class="top-bar">
-    <a href="/new">Add Catch</a> |
-    <a href="/stats">Stats</a>
+    <a href="/">Portfolio</a> |
+    <a href="/fish/new">Add Catch</a> |
+    <a href="/fish/stats">Stats</a>
 </div>
 
 <div class="controls">
@@ -415,8 +416,8 @@
                 {% endif %}
 
             <div class="actions">
-                <a href="/edit/{{ catch[0] }}">Edit</a>
-                <a href="/delete/{{ catch[0] }}">Delete</a>
+                <a href="/fish/edit/{{ catch[0] }}">Edit</a>
+                <a href="/fish/delete/{{ catch[0] }}">Delete</a>
             </div>
         </div>
     {% endfor %}
