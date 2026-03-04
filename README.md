@@ -1,7 +1,7 @@
 ## Deployment & Infrastructure
 
 ### Domain
-- **Domain Name:** anthonyfrial.dev
+- **Domain Name:** anthonyfrial.dev, https://fish-manager-9mqi.onrender.com/
 - **Registrar:** NameCheap
 
 The domain is configured to point to the Render web service using DNS A records.
@@ -12,7 +12,7 @@ The domain is configured to point to the Render web service using DNS A records.
 - **Platform:** Render
 - **Service Type:** Free Tier
 
-Render automatically redeploys the application whenever new commits are pushed to the connected GitHub repository.
+Render automatically redeploys the application whenever new commits are pushed to the connected GitHub repository, but if the website is inactive for a period of time, it shuts down the database and will take a few seconds to reload when going back to the website.
 
 ---
 
