@@ -1,16 +1,98 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Anthony Frialde | Portfolio</title>
-</head>
-<body>
-  <h1>Anthony Frialde</h1>
-  <p>Portfolio</p>
+<title>Anthony Frialde | Portfolio</title>
 
-  <h2>Projects</h2>
-  <ul>
-    <li><a href="/fish">Fish Collection Manager</a></li>
-    <li><a href="/battleship">Battleship (coming soon)</a></li>
-  </ul>
+<style>
+body{
+    font-family:Segoe UI, sans-serif;
+    margin:0;
+    padding:60px;
+    color:white;
+
+    background:radial-gradient(circle at 20% 30%, #4facfe 0%, transparent 40%),
+               radial-gradient(circle at 80% 70%, #00c6ff 0%, transparent 40%),
+               linear-gradient(135deg,#1e3c72,#2a5298);
+}
+
+h1{
+    text-align:center;
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    opacity:.8;
+    margin-bottom:60px;
+}
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.card{
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(14px);
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 12px 30px rgba(0,0,0,.25);
+    text-align:center;
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.card h2{
+    margin-bottom:10px;
+}
+
+.card p{
+    opacity:.85;
+}
+
+.card a{
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 18px;
+    border-radius:8px;
+    background:#4facfe;
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Anthony Frialde</h1>
+<p class="subtitle">
+Clemson University • Software Developer
+</p>
+
+<div class="projects">
+
+<div class="card">
+<h2>Fish Collection Manager</h2>
+<p>Track and analyze fishing catches with statistics and images.</p>
+<a href="/fish">Open Project</a>
+</div>
+
+<div class="card">
+<h2>Battleship Game</h2>
+<p>Multiplayer battleship game built with APIs.</p>
+<a href="/battleship">Coming Soon</a>
+</div>
+
+</div>
+
 </body>
 </html>
