@@ -20,6 +20,10 @@ def get_db_connection():
 def home():
     return render_template("home.html")
 
+@app.route("/battleship")
+def battleship():
+    return render_template("battleship.html")
+
 @app.route("/fish")
 def list_catches():
     page = int(request.args.get("page", 1))
