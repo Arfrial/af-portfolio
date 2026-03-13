@@ -35,6 +35,37 @@ background:rgba(255,255,255,0.65);
 z-index:-2;
 }
 
+.featured-card{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+text-decoration:none;
+color:inherit;
+cursor:pointer;
+}
+
+.featured-text{
+flex:1;
+}
+
+.featured-img{
+width:220px;
+border-radius:6px;
+}
+
+.featured-card h4{
+margin-bottom:6px;
+opacity:0.7;
+font-weight:normal;
+}
+
+.project-link{
+display:inline-block;
+margin-top:8px;
+font-weight:600;
+}
+
 /* Animated gradient blobs */
 
 .gradient-bg{
@@ -436,24 +467,28 @@ software projects, and cloud systems.
 
 <!-- FEATURED PROJECT (shows before scrolling) -->
 
-<div class="featured-project">
+<div class="container">
 
-<a href="/battleship" class="featured-card">
+<a href="/battleship" class="card featured-card">
+
+<div class="featured-text">
+
+<h4>Featured Project</h4>
+
+<h3>Ship Sinkers</h3>
+
+<p>
+An interactive browser-based battleship game with AI opponents,
+sound effects, animated UI, and multiple difficulty levels.
+</p>
+
+<span class="project-link">Play Game →</span>
+
+</div>
 
 <img src="/static/img/battleship-preview.PNG" class="featured-img">
 
-<div class="featured-text">
-<h3>Featured Project: Ship Sinkers</h3>
-<p>
-A browser-based Battleship strategy game with AI opponents,
-animated UI, and sound effects.
-Click to play the project.
-</p>
-</div>
-
 </a>
-
-</div>
 <!-- this is where I need to delete to return it back to original state-->
 </section>
 
