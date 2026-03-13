@@ -24,6 +24,10 @@ def home():
 def battleship():
     return render_template("battleship.html")
 
+@app.route("/final-project")
+def final_project():
+    return render_template("final-project.html")
+
 @app.route("/fish")
 def list_catches():
     page = int(request.args.get("page", 1))
