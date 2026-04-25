@@ -28,6 +28,10 @@ def battleship():
 def final_project():
     return render_template("final-project.html")
 
+@app.route('/projects/Ship-Sinkers-Phase-2')
+def ship_sinkers():
+    return render_template("ship_sinkers.html")
+
 @app.route("/fish")
 def list_catches():
     page = int(request.args.get("page", 1))
